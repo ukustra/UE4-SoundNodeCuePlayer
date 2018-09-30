@@ -15,7 +15,9 @@ void USoundNodeCuePlayer::Serialize(FArchive& Ar)
 	if (Ar.CustomVer(FFrameworkObjectVersion::GUID) >= FFrameworkObjectVersion::HardSoundReferences)
 	{
 		if (Ar.IsLoading())
+		{
 			Ar << SoundCue;
+		}
 		else if (Ar.IsSaving())
 		{
 			USoundCue* HardReference = (ShouldHardReferenceAsset() ? SoundCue : nullptr);
@@ -39,9 +41,13 @@ void USoundNodeCuePlayer::LoadAsset(bool bAddToRoot)
 			}
 		}
 		else if (bAddToRoot)
+		{
 			SoundCue->AddToRoot();
+		}
 		if (SoundCue)
+		{
 			SoundCue->AddToCluster(this);
+		}
 	}
 	else
 	{
@@ -49,7 +55,9 @@ void USoundNodeCuePlayer::LoadAsset(bool bAddToRoot)
 		if (SoundCue)
 		{
 			if (bAddToRoot)
+			{
 				SoundCue->AddToRoot();
+			}
 			SoundCue->AddToCluster(this);
 		}
 	}
@@ -68,7 +76,9 @@ void USoundNodeCuePlayer::OnSoundCueLoaded(const FName& PackageName, UPackage* P
 		if (SoundCue)
 		{
 			if (bAddToRoot)
+			{
 				SoundCue->AddToRoot();
+			}
 			SoundCue->AddToCluster(this);
 		}
 	}
@@ -79,7 +89,9 @@ void USoundNodeCuePlayer::OnSoundCueLoaded(const FName& PackageName, UPackage* P
 void USoundNodeCuePlayer::PostEditChangeProperty(FPropertyChangedEvent& PropertyChangedEvent)
 {
 	if (PropertyChangedEvent.Property && PropertyChangedEvent.Property->GetFName() == GET_MEMBER_NAME_CHECKED(USoundNodeCuePlayer, SoundCueAssetPtr))
+	{
 		LoadAsset();
+	}
 }
 #endif
 
@@ -94,7 +106,9 @@ void USoundNodeCuePlayer::ParseNodes(FAudioDevice* AudioDevice, const UPTRINT No
 	}
 
 	if (SoundCue && !IsTheSameSoundCue())
+	{
 		SoundCue->Parse(AudioDevice, NodeWaveInstanceHash, ActiveSound, ParseParams, WaveInstances);
+	}
 }
 
 float USoundNodeCuePlayer::GetDuration()
@@ -107,9 +121,13 @@ FText USoundNodeCuePlayer::GetTitle() const
 {
 	FText SoundCueName;
 	if (SoundCue)
+	{
 		SoundCueName = FText::FromString(SoundCue->GetFName().ToString());
+	}
 	else
+	{
 		SoundCueName = LOCTEXT("NoSoundCue", "NONE");
+	}
 
 	FText Title;
 
@@ -125,7 +143,9 @@ FText USoundNodeCuePlayer::GetTitle() const
 bool USoundNodeCuePlayer::IsTheSameSoundCue()
 {
 	if (SoundCueAssetPtr)
+	{
 		return SoundCueAssetPtr.GetAssetName() == CuePlayerAssetPtr.GetAssetName();
+	}
 	return false;
 }
 
