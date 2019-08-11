@@ -140,7 +140,7 @@ FText USoundNodeCuePlayer::GetTitle() const
 }
 #endif
 
-bool USoundNodeCuePlayer::IsTheSameSoundCue()
+bool USoundNodeCuePlayer::IsTheSameSoundCue() const
 {
 	if (SoundCueAssetPtr)
 	{
