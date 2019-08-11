@@ -24,7 +24,7 @@ private:
 
 	// Make sure Cue Player doesn't play the same Cue we created
 	TSoftObjectPtr<USoundNodeCuePlayer> CuePlayerAssetPtr = this;
-	bool IsTheSameSoundCue();
+	bool IsTheSameSoundCue() const;
 
 	void OnSoundCueLoaded(const FName& PackageName, UPackage* Package, EAsyncLoadingResult::Type Result, bool bAddToRoot);
 
