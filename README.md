@@ -1,6 +1,6 @@
 # UE4 SoundNodeCuePlayer
 ## Approved version: 4.18
-### Unreal Wiki link: https://wiki.unrealengine.com/Blueprint_Sound_Node:_Cue_Player
+### Unreal Wiki link: https://ue4community.wiki/legacy/blueprint-sound-node:-cue-player-0vxk26zz
 
 ![alt text](https://i.snag.gy/cGxrAK.jpg)
 
