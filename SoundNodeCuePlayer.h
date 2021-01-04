@@ -9,8 +9,8 @@ class USoundCue;
 /**
 * Sound node that contains a reference to the Sound Cue file to be played
 */
-UCLASS(hidecategories = Object, editinlinenew, meta = (DisplayName = "Cue Player"))
-class CUSTOMAUDIOPROJECT_API USoundNodeCuePlayer : public USoundNodeAssetReferencer
+UCLASS(hidecategories = Object, editinlinenew, MinimalAPI, meta = (DisplayName = "Cue Player"))
+class USoundNodeCuePlayer : public USoundNodeAssetReferencer
 {
 	// IMPORTANT: Please remember to update the '*_API' identifier above to match your own project
 	GENERATED_BODY()
